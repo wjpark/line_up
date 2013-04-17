@@ -1,0 +1,73 @@
+body {
+	background-color: #ffbb04;
+}
+
+#container {
+	width: 80%;
+	position: relative;
+	margin: auto;
+/*	border: 1px solid blue;*/
+}
+
+h1 {
+	font-family: "Lobster";
+	font-size: 55px;
+	color: #de0808;
+	line-height: 50px;
+	margin-top: 175px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.rule_yellow {
+	height: 2px;
+	background-color: #f9aa00;
+	margin: auto;
+}
+
+.rule_white {
+	height: 1px;
+	background-color: #ffda66;
+	margin: auto;
+}
+
+.btn_login {
+	background-color: #0a8cc8;
+	font-family: "Open Sans";
+	font-size: 20px;
+	line-height: 20px;
+	color: white;
+	padding: 8px 22px;
+	border: 1px solid #086a97;
+	border-radius: 4px;
+	text-align: center;
+  cursor: pointer;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	padding: 8px;
+	font-family: "Open Sans";
+	font-size: 20px;
+	line-height: 25px;
+}
+
+.form-inline {
+	text-align: center;
+	margin-top: 20px;
+}
