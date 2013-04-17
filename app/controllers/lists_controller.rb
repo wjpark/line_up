@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
 	
-	before_filter :authenticate_user!, :only => [:login]
+	before_filter :authenticate_user!, :only => [:home]
 
-	def login
+	def home
+		@users = User.all
 	end
 
 end

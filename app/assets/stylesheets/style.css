@@ -4,6 +4,7 @@ body {
 
 #container {
 	width: 80%;
+	min-width: 600px;
 	position: relative;
 	margin: auto;
 /*	border: 1px solid blue;*/
@@ -19,6 +20,16 @@ h1 {
 	text-align: center;
 }
 
+h2 {
+	font-family: "Lobster";
+	font-size: 34px;
+	color: #de0808;
+	line-height: 50px;
+	margin-top: 100px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
 .rule_yellow {
 	height: 2px;
 	background-color: #f9aa00;
@@ -31,13 +42,13 @@ h1 {
 	margin: auto;
 }
 
-.btn_login {
+.btn_blue {
 	background-color: #0a8cc8;
 	font-family: "Open Sans";
 	font-size: 20px;
 	line-height: 20px;
 	color: white;
-	padding: 8px 22px;
+	padding: 8px 15px;
 	border: 1px solid #086a97;
 	border-radius: 4px;
 	text-align: center;
@@ -63,6 +74,8 @@ input[type="color"],
 .uneditable-input {
 	padding: 8px;
 	font-family: "Open Sans";
+	font-weight: 100;
+	margin-right: 5px;
 	font-size: 20px;
 	line-height: 25px;
 }
@@ -70,4 +83,11 @@ input[type="color"],
 .form-inline {
 	text-align: center;
 	margin-top: 20px;
+}
+
+#auth_links {
+	width: 570px;
+	margin: auto;
+	margin-top: -10px;
+	text-align: right;
 }

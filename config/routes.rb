@@ -1,7 +1,7 @@
 LineUp::Application.routes.draw do
   devise_for :users
 
-root :to => 'lists#login'
+root :to => 'lists#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
