@@ -2,7 +2,7 @@ body {
 	background-color: #ffbb04;
 }
 
-#container {
+.container {
 	width: 80%;
 	min-width: 600px;
 	position: relative;
@@ -76,7 +76,7 @@ input[type="color"],
 	font-family: "Open Sans";
 	font-weight: 100;
 	margin-right: 5px;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 25px;
 }
 

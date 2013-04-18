@@ -1,9 +1,10 @@
-<div id="container">
+<div class="container">
 	<h1>Where are all the lines at?</h1>
 	<div class="rule_yellow" style="width:570px"></div>
 	<div class="rule_white" style="width:570px"></div>
 
 	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-inline"}) do |f| %>
+	
   <%= f.email_field :email, :autofocus => true, :placeholder => 'Email', :class => "input-large" %>
   <%= f.password_field :password, :placeholder => 'Password', :class => "input-large" %>
 
