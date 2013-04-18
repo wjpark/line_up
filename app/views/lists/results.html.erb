@@ -1,0 +1,25 @@
+<div class="container">
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
+	<h2>The best places to stand in line</h2>
+	<% now = Time.now %>
+	<%= now.strftime("%A, %h #{now.day.ordinalize}") %>
+	
+	<% rank = 1 %> 
+	<% @venues.each do |v| %>
+		<div>
+			<%= rank %>
+			<div class="top">
+				<img src="<%= v["categories"][0]["icon"] %>">	
+				<%= v["name"] %> 
+				<%= v["location"]["address"] %> 
+				<a href= "<%= v["canonicalUrl"] %>" target="blank"> Details </a><br>
+				<%# v["categories"][0]["id"] %>
+				<%# v["categories"][0]["name"] %>
+				Total Check-Ins <%= v["stats"]["checkinsCount"] %>
+				Here now <%= v["hereNow"]["count"] %>
+				
+			</div>
+			<% rank += 1 %>
+		</div>
+	<% end %>
+</div>
