@@ -3,7 +3,7 @@ LineUp::Application.routes.draw do
 
 root :to => "lists#home"
 get "/results", :to => "lists#results", :as => :results
-post "/results", :to => "lists#results"
+post "/results", :to => "lists#save"
 get "/favorites", :to => "lists#favorites"
   # The priority is based upon order of creation:
   # first created -> highest priority.

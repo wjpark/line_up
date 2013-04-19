@@ -1,7 +1,7 @@
-.top {
+.results {
 	background-color: white;
 	height: 50px;
-	width: 400px;
+	width: 500px;
 	margin: auto;
 	margin-bottom: 20px;
 }
@@ -14,5 +14,9 @@
 	font-family: "Open Sans";
 	font-size: 16px;
 	color: black;
+	text-align: center;
+}
+
+#date {
 	text-align: center;
 }

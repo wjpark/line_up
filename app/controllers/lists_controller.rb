@@ -14,6 +14,10 @@ class ListsController < ApplicationController
 		@venues = client.trending_venues(coordinates.join(","),{:limit => 10, :radius => 10000}).venues
 	end
 
+	def save
+
+	end
+
 	def favorites
 		@favorites = Place.all
 	end

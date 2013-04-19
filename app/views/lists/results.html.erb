@@ -1,31 +1,33 @@
 <div class="container">
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
-	<h2>The top places to stand in line right now</h2>
-	<% now = Time.now %>
-	<%= now.strftime("%A, %h #{now.day.ordinalize}") %>
 	
+	<h2>The top places to stand in line right now</h2>
+	
+	<div>
+		<% now = Time.now %>
+		<%= now.strftime("%A, %h #{now.day.ordinalize}") %>
+	</div>
+
 	<% rank = 1 %> 
+	
 	<% @venues.each do |v| %>
 		<div>
 			<%= rank %>
-			<div class="top">
+			<div class="results">
 				<img src="<%= v["categories"][0]["icon"] %>">	
 				<%= v["name"] %> 
 				<%= v["location"]["address"] %> 
-				<a href= "<%= v["canonicalUrl"] %>" target="blank"> Details </a><br>
 				<%# v["categories"][0]["id"] %>
 				<%# v["categories"][0]["name"] %>
 				Total Check-Ins <%= v["stats"]["checkinsCount"] %>
 				<%= v["hereNow"]["count"] %> current check-ins.
-
-				<%= form_tag(results_path, :method => "post") do %>
-	     	<input type='hidden' value="<%= v["location"]["address"] %>" name='place[address]'/>
-	     	<input type='hidden' value="<%= v["categories"][0]["icon"] %>" name='place[icon]'/>
-	     	<input type='hidden' value="<%= v["name"] %>" name='place[name]'/>
-	     	<input type='hidden' value="<%= v["canonicalUrl"] %>" name='place[url]'/>
-	     	<button type="submit">Save</button> 
-	   	 <% end %>
-					
+				<div>
+					<%= form_tag(results_path, :method => "post") do %>
+		     	<input type='hidden' value="<%= v["categories"][0]["id"] %>" name='place[foursquare_id]'/>
+		     	<button type="submit">Save</button> 
+		   	 	<% end %>
+		   	 	<a href= "<%= v["canonicalUrl"] %>" target="blank"> Details </a><br>
+				</div>	
 			</div>
 			<% rank += 1 %>
 		</div>
