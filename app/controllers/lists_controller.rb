@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 	
-	#before_filter :authenticate_user!, :only => [:my_lists]
+	before_filter :authenticate_user!, :only => [:my_lists]
 
 	def home
 	end
@@ -10,8 +10,10 @@ class ListsController < ApplicationController
 		coordinates = Geocoder.coordinates(address)
 		#raise request.location.inspect
 		#raise coordinates.inspect
-		client = Foursquare2::Client.new(:client_id => '4B5MERQAYMRB5F4I535NEBDZRNN24UIUAUFSFNKWIXACNLUX', :client_secret => '0VLPK4IGM5IXJ245JTEOF5ARZSKUBU2ILZISYBSZB4RSMPWU')
+		client = Foursquare2::Client.new(:client_id => ENV["CLIENT_ID"], :client_secret => ENV["CLIENT_SECRET"])
 		@venues = client.trending_venues(coordinates.join(","),{:limit => 11}).venues
 	end
 
+	def my_lists
+	end
 end

@@ -5,7 +5,7 @@ body {
 .container {
 	width: 80%;
 	min-width: 600px;
-	position: relative;
+	/*position: relative;*/
 	margin: auto;
 /*	border: 1px solid blue;*/
 }
@@ -55,6 +55,10 @@ h2 {
   cursor: pointer;
 }
 
+#search_box .btn_blue {
+	margin-top: -9px;
+}
+
 select,
 textarea,
 input[type="text"],
@@ -90,4 +94,14 @@ input[type="color"],
 	margin: auto;
 	margin-top: -10px;
 	text-align: right;
+}
+
+#search_box {
+	width: 570px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#search_box select, textarea, input[type="text"] {
+	width: 450px;
 }
