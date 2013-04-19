@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 	
-	before_filter :authenticate_user!, :only => [:my_lists]
+	before_filter :authenticate_user!, :only => [:favorites]
 
 	def home
 	end
@@ -14,6 +14,7 @@ class ListsController < ApplicationController
 		@venues = client.trending_venues(coordinates.join(","),{:limit => 10, :radius => 10000}).venues
 	end
 
-	def my_lists
+	def favorites
+		@favorites = Place.all
 	end
 end

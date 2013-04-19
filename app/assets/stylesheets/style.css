@@ -102,6 +102,8 @@ input[type="color"],
 	margin-top: 20px;
 }
 
-#search_box select, textarea, input[type="text"] {
+#search_box input[type="text"] {
 	width: 450px;
 }
+
+

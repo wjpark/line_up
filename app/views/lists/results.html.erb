@@ -16,8 +16,15 @@
 				<%# v["categories"][0]["id"] %>
 				<%# v["categories"][0]["name"] %>
 				Total Check-Ins <%= v["stats"]["checkinsCount"] %>
-				Here now <%= v["hereNow"]["count"] %>
+				<%= v["hereNow"]["count"] %> current check-ins.
 
+				<%= form_tag(results_path, :method => "post") do %>
+	     	<input type='hidden' value="<%= v["location"]["address"] %>" name='place[address]'/>
+	     	<input type='hidden' value="<%= v["categories"][0]["icon"] %>" name='place[icon]'/>
+	     	<input type='hidden' value="<%= v["name"] %>" name='place[name]'/>
+	     	<input type='hidden' value="<%= v["canonicalUrl"] %>" name='place[url]'/>
+	     	<button type="submit">Save</button> 
+	   	 <% end %>
 					
 			</div>
 			<% rank += 1 %>

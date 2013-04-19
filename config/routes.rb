@@ -2,7 +2,9 @@ LineUp::Application.routes.draw do
   devise_for :users
 
 root :to => "lists#home"
-get "/results", :to => "lists#results"
+get "/results", :to => "lists#results", :as => :results
+post "/results", :to => "lists#results"
+get "/favorites", :to => "lists#favorites"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
