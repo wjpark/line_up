@@ -1,4 +1,5 @@
 <div class="container">
+	<a href="/favorites"> My Saved List </a>
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
 	
 	<h2>The top places to stand in line right now</h2>
@@ -24,6 +25,7 @@
 				<div>
 					<%= form_tag(results_path, :method => "post") do %>
 		     	<input type='hidden' value="<%= v["categories"][0]["id"] %>" name='place[foursquare_id]'/>
+		     	<input type='hidden' name="address" value="<%= @address %>">
 		     	<button type="submit">Save</button> 
 		   	 	<% end %>
 		   	 	<a href= "<%= v["canonicalUrl"] %>" target="blank"> Details </a><br>

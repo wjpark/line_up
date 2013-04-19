@@ -6,8 +6,8 @@ class ListsController < ApplicationController
 	end
 
 	def results
-		address = params[:address]
-		coordinates = Geocoder.coordinates(address)
+		@address = params[:address]
+		coordinates = Geocoder.coordinates(@address)
 		#raise request.location.inspect
 		#raise coordinates.inspect
 		client = Foursquare2::Client.new(:client_id => ENV["CLIENT_ID"], :client_secret => ENV["CLIENT_SECRET"])
@@ -15,10 +15,12 @@ class ListsController < ApplicationController
 	end
 
 	def save
-
+		@saved = Place.create(:foursquare_id => params[:place][:foursquare_id])
+		redirect_to(results_path(:address => params[:address]))
 	end
 
 	def favorites
-		@favorites = Place.all
+		@favorites = Favorite.all
+		@places = Place.all
 	end
 end
