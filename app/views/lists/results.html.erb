@@ -1,6 +1,6 @@
 <div class="container">
 	<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
-	<h2>The best places to stand in line</h2>
+	<h2>The top places to stand in line right now</h2>
 	<% now = Time.now %>
 	<%= now.strftime("%A, %h #{now.day.ordinalize}") %>
 	
