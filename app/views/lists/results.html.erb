@@ -1,37 +1,49 @@
 <div class="container">
-	<a href="/favorites"> My Saved List </a>
-	<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
-	
+	<div class="header">
+		<a href="/favorites"> Go to saved list </a>
+		<a href="/comments"> Send feedback </a>
+		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
+	</div>
 	<h2>The top places to stand in line right now</h2>
 	
-	<div>
+	<div class="date">
 		<% now = Time.now %>
-		<%= now.strftime("%A, %h #{now.day.ordinalize}") %>
+		For <%= now.strftime("%A, %h #{now.day.ordinalize}") %>
 	</div>
 
 	<% rank = 1 %> 
 	
 	<% @venues.each do |v| %>
-		<div>
-			<%= rank %>
-			<div class="results">
-				<img src="<%= v["categories"][0]["icon"] %>">	
-				<%= v["name"] %> 
-				<%= v["location"]["address"] %> 
-				<%# v["categories"][0]["id"] %>
-				<%# v["categories"][0]["name"] %>
-				Total Check-Ins <%= v["stats"]["checkinsCount"] %>
-				<%= v["hereNow"]["count"] %> current check-ins.
+		<div class="results">
+			<div id="rank">
+				<%= rank %>
+			</div>
+
+			<div class="result">
+				<div class="current_checkins">
+					<p>Current <br>
+						Check-ins</p>
+					<p><%= v["hereNow"]["count"] %></p>
+				</div>
+				<div class="venue_details">
+					<div><img src="<%= v["categories"][0]["icon"] %>"></div>
+					<p><a href= "<%= v["canonicalUrl"] %>" target="blank"><%= v["name"] %></a></p>
+					<p><%= v["location"]["address"] %></p>
+					<%# v["id"] %>
+					<%# v["categories"][0]["name"] %>
+					<p>Total Check-ins: <%= v["stats"]["checkinsCount"] %></p>
+				</div>
+
 				<div>
 					<%= form_tag(results_path, :method => "post") do %>
-		     	<input type='hidden' value="<%= v["categories"][0]["id"] %>" name='place[foursquare_id]'/>
-		     	<input type='hidden' name="address" value="<%= @address %>">
-		     	<button type="submit">Save</button> 
+		     	<input type='hidden' value="<%= v["id"] %>" name='foursquare_id'/>
+		     	<input type='hidden' value="<%= @address %>" name="address">
+		     	<button type="submit" class="save_delete">save</button> 
 		   	 	<% end %>
-		   	 	<a href= "<%= v["canonicalUrl"] %>" target="blank"> Details </a><br>
 				</div>	
 			</div>
 			<% rank += 1 %>
 		</div>
 	<% end %>
+	<%= Place.all %>
 </div>

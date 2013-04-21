@@ -15,12 +15,24 @@ class ListsController < ApplicationController
 	end
 
 	def save
-		@saved = Place.create(:foursquare_id => params[:place][:foursquare_id])
+		saved = Place.create(:foursquare_id => params[:foursquare_id])
+		current_user.places << saved 
 		redirect_to(results_path(:address => params[:address]))
 	end
 
 	def favorites
-		@favorites = Favorite.all
-		@places = Place.all
+		favorites_ids = current_user.places
+		favorites_ids.map do |fav|
+			client = Foursquare2::Client.new(:client_id => ENV["CLIENT_ID"], :client_secret => ENV["CLIENT_SECRET"])
+			@favorites = client.venue(fav.foursquare_id)
+			raise @favorites.inspect
+		end
+	end
+
+	def comment
+	end
+
+	def send_email
+		Mailer.form_email(params[:from], params[:subject], params[:body]).deliver
 	end
 end

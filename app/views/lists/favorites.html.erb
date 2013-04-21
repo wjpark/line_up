@@ -1,4 +1,10 @@
-hello
+<% rank = 1 %>
+<% @favorites.each do |fav| %>
+		
+	<img src="<%= fav["categories"]["icon"] %>"> 
+			
+			<% rank += 1 %>
+		
+<% end %>
 
-<%= @favorites %>
-<%= @places %>
+

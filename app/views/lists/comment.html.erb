@@ -1,0 +1,16 @@
+Tell us what you think
+
+<form action='/comments' method='post'>
+	<div>
+		<input type="email" name="from" placeholder="Your email address">
+	</div>
+	<div>
+		<input type="text" name="subject" placeholder="Subject">
+	</div>
+	<div>
+	<%= text_area_tag(:body, "", :placeholder => "Your thoughts") %>
+	</div>
+	<div>
+	<%= submit_tag "Submit" %>
+</div>
+</form>

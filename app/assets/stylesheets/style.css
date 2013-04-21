@@ -1,3 +1,7 @@
+.test {
+	display: in
+}
+
 body {
 	background-color: #ffbb04;
 }
@@ -25,7 +29,7 @@ h2 {
 	font-size: 34px;
 	color: #de0808;
 	line-height: 50px;
-	margin-top: 100px;
+	margin-top: 80px;
 	margin-bottom: 10px;
 	text-align: center;
 }
