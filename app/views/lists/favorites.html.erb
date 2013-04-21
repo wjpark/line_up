@@ -1,10 +1,49 @@
-<% rank = 1 %>
-<% @favorites.each do |fav| %>
-		
-	<img src="<%= fav["categories"]["icon"] %>"> 
-			
-			<% rank += 1 %>
-		
-<% end %>
+<div id="bg_blue">
+<div class="container">
+	<div class="header">
+		<a href="/results"> Back to results </a>
+		<a href="/comments"> Send feedback </a>
+		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
+	</div>
+	<h2 style="color: white">Your saved list</h2>
 
+	<div class="date">
+	</div>
+	
+<% rank = 1 %>
+
+<% @favorites.each do |fav| %>
+	<div class="results">
+			<div id="rank" style="color:white">
+				<%= rank %>
+			</div>
+			
+			<div class="result">
+				<div class="current_checkins">
+					<p>Current <br>
+						Check-ins</p>
+					<p><%= fav["hereNow"]["count"] %></p>
+				</div>
+				<div class="venue_details">
+					<div><img src="<%= fav["categories"][0]["icon"] %>"></div>
+					<p><a href= "<%= fav["canonicalUrl"] %>" target="blank"><%= fav["name"] %></a></p>
+					<p><%= fav["location"]["address"] %></p>
+					<%# fav["id"] %>
+					<%# v["categories"][0]["name"] %>
+					<p>Total Check-ins: <%= fav["stats"]["checkinsCount"] %></p>
+				</div>
+			
+				<div>
+					<%= form_tag(favorites_path, :method => "delete") do %>
+		     	<input type='hidden' value="<%= fav["id"] %>" name='foursquare_id'/>
+		     	<input type='hidden' value="<%= @address %>" name="address">
+		     	<button type="submit" id="delete">X</button> 
+		   	 	<% end %>
+				</div>	
+			</div>
+			<% rank += 1 %>
+		</div>
+	<% end %>
+</div>
+</div>
 

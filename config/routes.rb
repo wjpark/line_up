@@ -2,11 +2,12 @@ LineUp::Application.routes.draw do
   devise_for :users
 
 root :to => "lists#home"
-get "/results",   :to => "lists#results", :as => :results
-post "/results",  :to => "lists#save"
-get "/favorites", :to => "lists#favorites"
-get "/comments",  :to => "lists#comment"
-post "/comments", :to => "lists#send_email"
+get "/results",      :to => "lists#results", :as => :results
+post "/results",     :to => "lists#save"
+get "/favorites",    :to => "lists#favorites"
+delete "/favorites", :to => "lists#delete", :as => :favorites
+get "/comments",     :to => "lists#comment"
+post "/comments",    :to => "lists#send_email"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

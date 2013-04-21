@@ -22,11 +22,17 @@ class ListsController < ApplicationController
 
 	def favorites
 		favorites_ids = current_user.places
-		favorites_ids.map do |fav|
+		@favorites = favorites_ids.map do |fav|
 			client = Foursquare2::Client.new(:client_id => ENV["CLIENT_ID"], :client_secret => ENV["CLIENT_SECRET"])
-			@favorites = client.venue(fav.foursquare_id)
-			raise @favorites.inspect
+			client.venue(fav.foursquare_id)
 		end
+	end
+
+	def delete
+		@favorite = Place.find_by_foursquare_id(params[:foursquare_id])
+		@favorite.destroy
+
+		redirect_to favorites_url
 	end
 
 	def comment

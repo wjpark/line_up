@@ -2,7 +2,7 @@
 	display: in
 }
 
-body {
+#bg_yellow {
 	background-color: #ffbb04;
 }
 
@@ -60,7 +60,7 @@ h2 {
 }
 
 #search_box .btn_blue {
-	margin-top: -9px;
+	margin-top: -11px;
 }
 
 select,
@@ -101,7 +101,7 @@ input[type="color"],
 }
 
 #search_box {
-	width: 570px;
+	width: 571px;
 	margin: auto;
 	margin-top: 20px;
 }

@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="header">
-		<a href="/favorites"> Go to saved list </a>
+		<a href="/favorites"> Go to Saved List </a>
 		<a href="/comments"> Send feedback </a>
 		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
 	</div>
@@ -34,16 +34,19 @@
 					<p>Total Check-ins: <%= v["stats"]["checkinsCount"] %></p>
 				</div>
 
-				<div>
-					<%= form_tag(results_path, :method => "post") do %>
-		     	<input type='hidden' value="<%= v["id"] %>" name='foursquare_id'/>
-		     	<input type='hidden' value="<%= @address %>" name="address">
-		     	<button type="submit" class="save_delete">save</button> 
-		   	 	<% end %>
-				</div>	
+				<% if Place.find_by_foursquare_id(v["id"]).present? %>
+						<p id="save">saved!</p>
+					<% else %>
+						<div>
+							<%= form_tag(results_path, :method => "post") do %>
+				     	<input type='hidden' value="<%= v["id"] %>" name='foursquare_id'/>
+				     	<input type='hidden' value="<%= @address %>" name="address">
+				     	<button type="submit" id="save">save</button> 
+				   	 	<% end %>
+						</div>	
+				<% end %>
 			</div>
 			<% rank += 1 %>
 		</div>
 	<% end %>
-	<%= Place.all %>
 </div>
