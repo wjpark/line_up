@@ -8,11 +8,9 @@ class ListsController < ApplicationController
 
 	def results
 		session[:search_results] = request.url
-		@address = params[:address]
-		#session[:address] = params[:address] unless !params[:address]
+		@address = params[:address] || session[:address]
+		session[:address] = params[:address] if params[:address]
 		coordinates = Geocoder.coordinates(@address)
-		#raise request.location.inspect
-		#raise coordinates.inspect
 		client = Foursquare2::Client.new(:client_id => ENV["CLIENT_ID"], :client_secret => ENV["CLIENT_SECRET"])
 		@venues = client.trending_venues(coordinates.join(","),{:limit => 10, :radius => 10000}).venues
 	end
@@ -20,8 +18,7 @@ class ListsController < ApplicationController
 	def save
 		saved = Place.create(:foursquare_id => params[:foursquare_id])
 		current_user.places << saved
-		raise params.inspect
-		redirect_to results_path(:address => params[:address])
+		redirect_to results_path
 	end
 
 	def favorites
