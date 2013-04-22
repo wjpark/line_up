@@ -1,8 +1,14 @@
+<%= params.inspect %>
+<%= session.inspect %>
 <div class="container">
 	<div class="header">
-		<a href="/favorites"> Go to Saved List </a>
+		<a href="/favorites"> Go to my saved list </a>
 		<a href="/comments"> Send feedback </a>
-		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
+		<% if user_signed_in? %>
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+		<% else %>
+			<%= link_to "Log in", new_user_session_path %>
+		<% end %>
 	</div>
 	<h2>The top places to stand in line right now</h2>
 	
@@ -29,12 +35,10 @@
 					<div><img src="<%= v["categories"][0]["icon"] %>"></div>
 					<p><a href= "<%= v["canonicalUrl"] %>" target="blank"><%= v["name"] %></a></p>
 					<p><%= v["location"]["address"] %></p>
-					<%# v["id"] %>
-					<%# v["categories"][0]["name"] %>
 					<p>Total Check-ins: <%= v["stats"]["checkinsCount"] %></p>
 				</div>
 
-				<% if Place.find_by_foursquare_id(v["id"]).present? %>
+				<% if user_signed_in? && Place.find_by_foursquare_id(v["id"]).present? %>
 						<p id="save">saved!</p>
 					<% else %>
 						<div>

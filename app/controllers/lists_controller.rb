@@ -1,12 +1,15 @@
 class ListsController < ApplicationController
 	
-	before_filter :authenticate_user!, :only => [:favorites]
+	before_filter :store_location
+	before_filter :authenticate_user!, :only => [:favorites, :save]
 
 	def home
 	end
 
 	def results
+		session[:search_results] = request.url
 		@address = params[:address]
+		#session[:address] = params[:address] unless !params[:address]
 		coordinates = Geocoder.coordinates(@address)
 		#raise request.location.inspect
 		#raise coordinates.inspect
@@ -16,8 +19,9 @@ class ListsController < ApplicationController
 
 	def save
 		saved = Place.create(:foursquare_id => params[:foursquare_id])
-		current_user.places << saved 
-		redirect_to(results_path(:address => params[:address]))
+		current_user.places << saved
+		raise params.inspect
+		redirect_to results_path(:address => params[:address])
 	end
 
 	def favorites

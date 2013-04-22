@@ -1,16 +1,23 @@
-Tell us what you think
+<div class="container">
+	<div class="header_fav">
+		<%= link_to "Back to search results", session[:search_results]%>
+	</div>
+	
+	<h2>Tell us what you think</h2>
+	<div class="rule_yellow" style="width:290px"></div>
+	<div class="rule_white" style="width:290px"></div>
 
-<form action='/comments' method='post'>
-	<div>
-		<input type="email" name="from" placeholder="Your email address">
+	<form action='/comments' method='post' id="email_form">
+		<div>
+			<input type="email" name="from" placeholder="Your email address" class = "input-xlarge">
+		</div>
+		<div>
+			<input type="text" name="subject" placeholder="Subject" class = "input-xlarge">
+		</div>
+		<div>
+		<%= text_area_tag(:body, "", :placeholder => "Your thoughts", :class => "input-xlarge") %>
+		</div>
+		<div>
+		<%= submit_tag "Submit", :class => "btn_blue", :style => "width:288px" %>
 	</div>
-	<div>
-		<input type="text" name="subject" placeholder="Subject">
-	</div>
-	<div>
-	<%= text_area_tag(:body, "", :placeholder => "Your thoughts") %>
-	</div>
-	<div>
-	<%= submit_tag "Submit" %>
-</div>
-</form>
+	</form>

@@ -38,7 +38,7 @@
 
 .result {
 	background-color: white; 
-  width: 525px;
+  width: 530px;
   height: 80px;
   display: inline-block;
   float: left;
@@ -68,7 +68,7 @@
   font-weight: 500;
   padding-top: 3px;
   color: black;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
 .venue_details {
@@ -118,6 +118,11 @@
 
 .results form {
   margin: 0px;
+}
+
+#email_form {
+	text-align: center;
+	margin-top: 25px;
 }
 
 
