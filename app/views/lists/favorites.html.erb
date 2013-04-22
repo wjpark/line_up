@@ -1,6 +1,7 @@
 <div id="bg_blue">
 <div class="container">
 	<div class="header_fav">
+		<a href="/"> New search </a>
 		<%= link_to "Back to search results", session[:search_results]%>
 		<a href="/comments"> Send feedback </a>
 		<%= link_to('Logout', destroy_user_session_path, :method => :delete, :id => "logout") %>
