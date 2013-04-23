@@ -21,7 +21,7 @@
 	width: 650px;
 	height: 80px;
 	margin: auto;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 #rank {
@@ -39,7 +39,7 @@
 .result {
 	background-color: white; 
   width: 530px;
-  height: 80px;
+  height: 97px;
   display: inline-block;
   float: left;
 }
@@ -47,7 +47,7 @@
 .current_checkins {
   display: inline-block;
   padding-left: 15px;
-  padding-top: 12px;
+  padding-top: 17px;
   padding-right: 10px;
   width: 70px;
   float: left;
@@ -87,6 +87,7 @@
   font-family: "Open Sans";
   font-size: 14px;
   font-weight: 500;
+  line-height: 15px;
 }
 
 .venue_details p {
@@ -97,15 +98,16 @@
 }
 
 .venue_details img {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   padding-right: 10px;
+  padding-top: 1px;
   float: left;
 }
 
 #save {
   background-color: #0a8cc8;
   width: 75px;
-  height: 80px;
+  height: 97px;
   font-family: "Open Sans";
   font-size: 20px;
   font-weight: 500;
